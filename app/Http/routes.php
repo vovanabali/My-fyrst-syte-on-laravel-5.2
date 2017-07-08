@@ -11,10 +11,44 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', ['as'=>'home',function () {
     return view('welcome');
+}]);
+
+/*::get('/page/{id}',function($id) {
+
+    echo "<pre>";
+
+    echo $id;
+    //print_r($_ENV);
+    //echo Config::get('app.locale');
+
+    echo "</pre>";
+
+});//->where(['id'=>'[0-9]+','cat'=>'[A-Za-z]+']);
+
+Route::post('/comments',function (){
+    print_r($_POST);
+    return;
 });
 
-Route::get('/page/', function () {
-    return view('page');
+Route::match(['get','post'],'/comments',function (){
+    print_r($_POST);
+    return;
+});
+
+Route::any('/comments',function (){
+    print_r($_POST);
+    return;
+});
+*/
+
+Route::group(['prefix'=>'admin'],function (){
+    Route::get('page/create',function (){
+       return redirect()->route('home') ;
+    });
+
+    Route::get('page/edit',function (){
+        echo 'page/edit';
+    });
 });
