@@ -41,7 +41,7 @@ Route::any('/comments',function (){
     print_r($_POST);
     return;
 });
-*/
+
 
 Route::group(['prefix'=>'admin'],function (){
     Route::get('page/create',function (){
@@ -52,3 +52,18 @@ Route::group(['prefix'=>'admin'],function (){
         echo 'page/edit';
     });
 });
+Route::get('/about','FirstController@show');
+*/
+
+Route::get('/about/{id}','FirstController@show');
+
+
+Route::get('/articles',['uses'=>'Admin\Core@getArticle', 'as'=>'articles']);
+
+
+Route::get('/article/{page}',['uses'=>'Admin\Core@getArticle','as'=>'article','middleware'=>'mymiddle']); //Использывание посредника
+
+//list pages
+//Route::resource('/pages','Admin\CoreResurse');
+
+//Route::controller('/pages','PageController',['getCreate'=>'pages.create']);

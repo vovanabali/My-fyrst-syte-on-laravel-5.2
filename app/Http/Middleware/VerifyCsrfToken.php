@@ -12,6 +12,6 @@ class VerifyCsrfToken extends BaseVerifier
      * @var array
      */
     protected $except = [
-        '/comments', //Исключаем адрес blog/comments из csrf защиты)
+        '/comments','pages' //Исключаем адрес blog/comments из csrf защиты)
     ];
 }
