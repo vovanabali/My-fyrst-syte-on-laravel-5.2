@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', ['as'=>'home',function () {
-    return view('welcome');
-}]);
+Route::get('/', ['as'=>'home','uses'=>'Admin\IndexController@show']);
 
 /*::get('/page/{id}',function($id) {
 
@@ -55,13 +53,13 @@ Route::group(['prefix'=>'admin'],function (){
 Route::get('/about','FirstController@show');
 */
 
-Route::get('/about/{id}','FirstController@show');
+Route::get('/about',['uses'=>'Admin\AboutController@show','as'=>'about']);
 
 
 Route::get('/articles',['uses'=>'Admin\Core@getArticle', 'as'=>'articles']);
 
 
-Route::get('/article/{page}',['uses'=>'Admin\Core@getArticle','as'=>'article','middleware'=>'mymiddle']); //Использывание посредника
+Route::get('/article/{page}',['uses'=>'Admin\Core@getArticle','as'=>'article'/*,'middleware'=>'mymiddle'*/]); //Использывание посредника
 
 //list pages
 //Route::resource('/pages','Admin\CoreResurse');

@@ -7,16 +7,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class Core extends Controller
+class AboutController extends Controller
 {
     //
-    //List materials
-    public function getArticles(){
-
-    }
-
-    //Material
-    public function getArticle(){
+    public function show(){
 
     }
 }
