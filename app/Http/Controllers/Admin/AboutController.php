@@ -11,6 +11,11 @@ class AboutController extends Controller
 {
     //
     public function show(){
-
+        if (view()->exists('Default.about')){
+            $viwe =  view('Default.about',['title'=>'Новове значение'])->render();
+            echo $viwe;
+            return;
+        }
+        abort(404);
     }
 }

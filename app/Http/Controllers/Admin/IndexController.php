@@ -23,12 +23,12 @@ class IndexController extends Controller
             return $view;
         */
         // Проверка на существование
-        if (view()->exists('Default.template')){
+        if (view()->exists('Default.index')){
             /*
             viwe()->name('Default.template','myviwe');
             viwe()->of(myviwe)->withTitle('(Параметр №1)');
            */
-           $viwe =  view('Default.template',['title'=>'Новове значение'])->render();
+           $viwe =  view('Default.index',['title'=>'Новове значение'])->render();
            echo $viwe;
            return;
             /*return view('Default.template')->withTitle('(Параметр №1)');*/
