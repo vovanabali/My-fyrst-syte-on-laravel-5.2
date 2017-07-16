@@ -39,6 +39,7 @@
             <a class="navbar-brand" href="{{ route('about')}}">About</a>
             <a class="navbar-brand" href="{{route('articles')}}">Articles</a>
             <a class="navbar-brand" href="{{route('article',array('id'=>10))}}">Article</a>
+            <a class="navbar-brand" href="{{route('contact')}}">Contact</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <form class="navbar-form navbar-right">
@@ -59,16 +60,15 @@
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
     <div class="container">
-        <h1>{{  @title  }}</h1>
+        <h1>{{  $title  }}</h1>
         <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
         <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
     </div>
 </div>
 @show
 
-
-<div class="col-md-3">
-    @section('sidebar')
+@section('sidebar')
+<div class="col-md-3" style="padding-left: 50px;">
     <div class="sidebar-module">
         <h2>Archive</h2>
         <ol class="list-unstyled">
@@ -86,8 +86,8 @@
             <li><a href="#">April 2013</a></li>
         </ol>
     </div>
-    @show
 </div>
+@show
 
 <div class="container">
     <!-- Example row of columns -->

@@ -19,4 +19,13 @@ class Core extends Controller
     public function getArticle(){
 
     }
+
+    public function getContact(){
+        if (view()->exists('Default.contact')){
+            $viwe =  view('Default.contact',['title'=>'Новове значение'])->render();
+            echo $viwe;
+            return;
+        }
+        abort(404);
+    }
 }

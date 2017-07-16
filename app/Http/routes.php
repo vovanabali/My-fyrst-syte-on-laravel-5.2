@@ -61,6 +61,7 @@ Route::get('/articles',['uses'=>'Admin\Core@getArticle', 'as'=>'articles']);
 
 Route::get('/article/{page}',['uses'=>'Admin\Core@getArticle','as'=>'article'/*,'middleware'=>'mymiddle'*/]); //Использывание посредника
 
+Route::match(['get','post'],'/contact/{name?}',['uses'=>'Admin\ContactController@show', 'as'=>'contact']);
 //list pages
 //Route::resource('/pages','Admin\CoreResurse');
 
