@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
         DB::listen(function ($query) { // При выполнении любого sql запроса выполняеться эта функция
 
             dump($query->sql); // Показывает все sql запросы которые были выполнены
-            dump($query->bindings); // показывает все переменные которые были исползываены в запросах 
+            //dump($query->bindings); // показывает все переменные которые были исползываены в запросах
         });
     }
 
