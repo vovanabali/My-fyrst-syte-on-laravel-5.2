@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Article;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -13,8 +14,34 @@ class Core extends Controller
     protected static $articles;
     //
     //List materials
-    public function getArticles(){
+    public function getArticles(Request $request){
+        //$articles =  Article::all();
+        /*foreach ($articles as $article){
+            echo $article->name.'<br>'; //Возвращает данные хранящиеся в поле name в таблице articles
+        }*/
 
+        //$articles =  Article::where('id','>',3)->orderBy('name')->take(2)->get();
+
+        /*Article::chunk(2,function ($articles){
+
+        });*/
+
+        /*$article = Article::find(1); // Ищет запись с id=1 в таблице article
+        echo $article->text;*/
+        //$article = Article::where('id',1)->first();
+        //$article = Article::findOrFail(2);
+      /*  $article = new Article;
+        $article->name = 'New Article';
+        $article->text = 'New Text';
+        $article->img = 'New Img';
+        $article->save();
+        $articles =  Article::all();*/
+
+        $article = Article::find(19);
+        /*$article->name = 'New Name 2';
+        $article->save();*/
+        dump($article);
+         return;
     }
 
     public static function addArticles($arr){

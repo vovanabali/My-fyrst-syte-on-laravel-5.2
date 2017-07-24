@@ -14,9 +14,8 @@ class AboutController extends Controller
     //
     public function show(){
         if (view()->exists('Default.about')){
-
             $page =  DB::select("Select `name`, `text` from `pages` where alias = :alias",['alias'=>'about']);
-            return view('Default.about',['title'=>'Hello World','page'=>$page[0]]);
+            return view('Default.about',['title'=>'Hello World','page'=>$page]);
         }
         abort(404);
     }

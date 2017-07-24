@@ -89,7 +89,7 @@
 </div>
 @show
 
-<div class="container">
+<div class="container" style="margin-top: 50px;">
     <!-- Example row of columns -->
     @yield('content')
     <hr>

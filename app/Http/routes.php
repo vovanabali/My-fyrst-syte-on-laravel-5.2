@@ -56,7 +56,7 @@ Route::get('/about','FirstController@show');
 Route::get('/about',['uses'=>'Admin\AboutController@show','as'=>'about']);
 
 
-Route::get('/articles',['uses'=>'Admin\Core@getArticle', 'as'=>'articles']);
+Route::get('/articles',['uses'=>'Admin\Core@getArticles', 'as'=>'articles']);
 
 
 Route::get('/article/{page}',['uses'=>'Admin\Core@getArticle','as'=>'article'/*,'middleware'=>'mymiddle'*/]); //Использывание посредника
