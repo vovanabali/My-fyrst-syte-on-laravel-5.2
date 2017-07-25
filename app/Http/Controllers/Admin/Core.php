@@ -15,102 +15,81 @@ class Core extends Controller
     //
     //List materials
     public function getArticles(Request $request){
-        //$articles =  Article::all();
-        /*foreach ($articles as $article){
-            echo $article->name.'<br>'; //Возвращает данные хранящиеся в поле name в таблице articles
+
+        /*Article::create(
+    [
+        'name'=>'Hello World',
+        'text'=>'create'
+    ]
+);*/
+
+        /*$articlew = Article::firstOrCreate( // Если запись существует то запись не будет создана
+            [
+                'name'=>'Hello World',
+                'text'=>'firstOrCreate'
+            ]
+        );
+        dump($articlew);
+        */
+
+        /*
+         * // Если существует запись то не создает иначае создает подготовленную модель для бобовления в БД
+        $newArticle = Article::firsOtNew(
+            [
+                'name'=>'Hello World',
+                'text'=>'firstOrCreate'
+            ]
+        );
+        $newArticle->save();
+        */
+
+        //Удаление записей
+        /*$article = Article::find(22);
+        $article->delete();*/
+
+        /*
+        Article::destroy(21);
+        Article::destroy([20,19]);
+        */
+
+        //Article::where('id','>',3)->delete();
+
+
+        /*$article = Article::find(3);
+        $article->delete();*/
+
+
+       /*
+        $articles = Article::withTrashed()->get();
+        $articles = Article::withTrashed()->restore(); //Возвращаем все записи и востанавливаем удаленные
+        $articles = Article::onlyTrashed()->restore(); // Возвращает только удаленные записи и востанавливает их
+       */
+        /*
+        foreach ($articles as $article){
+            if($article->trashed()){
+                echo $article->name.' Удалена <br>';
+                $article->restore(); // Вотанавливаем удаленные записи
+            }else{
+                echo 'Не удалена <br>';
+            }
         }*/
+        $article = Article::find(3);
+        $article->forceDelete();
+        $articles = Article::all();
+        dump($articles);
 
-        //$articles =  Article::where('id','>',3)->orderBy('name')->take(2)->get();
-
-        /*Article::chunk(2,function ($articles){
-
-        });*/
-
-        /*$article = Article::find(1); // Ищет запись с id=1 в таблице article
-        echo $article->text;*/
-        //$article = Article::where('id',1)->first();
-        //$article = Article::findOrFail(2);
-      /*  $article = new Article;
-        $article->name = 'New Article';
-        $article->text = 'New Text';
-        $article->img = 'New Img';
-        $article->save();
-        $articles =  Article::all();*/
-
-        $article = Article::find(19);
-        /*$article->name = 'New Name 2';
-        $article->save();*/
-        dump($article);
-         return;
+        return;
     }
 
     public static function addArticles($arr){
         return self::$articles[] = $arr;
     }
     //Material
-    public function getArticle(){
-        //$articles = DB::table('articles')->get(); // Все записи
-        //$articles = DB::table('articles')->first(); // Первое поле
-        //$articles = DB::table('articles')->value('name'); // первое поле и имя столбца
-        /*DB::table('articles')->chunk(2,function ($articles){ // Выберает данные из бд частями
-            foreach ($articles as $article){ // запсываем выбранные данне в переменную
-                Core::addArticles($article); // передаем выбранные данные в функцию
-            }
-        });
-        //dump($articles);
-        dump(self::$articles);*/
-
-        //$articles = DB::table('articles')->pluck('name'); // Возвращает все записи по определенному полю
-        //$articles = DB::table('articles')->count(); // Количество записей в таблице
-        //$articles = DB::table('articles')->max('id');// Максимальное значение с опеделенного поля
-        //$articles = DB::table('articles')->select('name','id','text')->get();
-        //$articles = DB::table('articles')->distinct()->select('name')->get();// Возвращет только уникальные значения
-        /*$query = DB::table('articles')->select('name');
-        ///
-        /// Код
-        ///
-        $articles = $query->addSelect('text' )->get();*/
-/*        $articles = DB::table('articles')->select('id','name')
-                                                                ->where('id','=',3)
-                                                                ->where('id','=',5,'or')
-                                                                ->get();*/
-
-/*        $articles = DB::table('articles')->select('id','name')->where(
-            [
-                ['id','=',2],
-                ['id','=',3,'or']
-            ])
-            ->get();*/
-        //$articles = DB::table('articles')->select('id','name')->whereBetween('id',[1,5])->get(); // whereNotBetween
-        //$articles = DB::table('articles')->select('id','name')->whereIn('id',[1,5,3,10])->get();// whereNotIn
-        //$articles = DB::table('articles')->select('id','name')->groupBy('name')->get();
-        //$articles = DB::table('articles')->select('id','name')->take(4)->get();
-        //dump($articles);
-
-/*        DB::table('articles')->insert([
-            [
-                'name'=>'Проба 23.07.17 №1', 'text'=>'Hello #1', 'img'=>1
-            ],
-            [
-                'name'=>'Проба 23.07.17 №2', 'text'=>'Hello #2','img'=>2
-            ]
-        ]);*/
-
-        /*$id = DB::table('articles')->insertGetId(
-            [
-            'name'=>'Проба 23.07.17 №1', 'text'=>'Hello #1', 'img'=>1
-            ]);
-        dump($id);*/
-
-        /*$result = DB::table('articles')->where('id',14)->update(['name'=>'Hello World']);
-        dump($result);*/
-
-        /*$result = DB::table('articles')->where('id',14)->delete();
-        dump($result);*/
+    public function getArticle($id){
+        echo 'Ответ - '.$id;
     }
 
-    public function getContact($id){
-        echo 'Ответ - '.$id;
+    public function getContact(){
 /*        if (view()->exists('Default.contact')){
             $viwe =  view('Default.contact',['title'=>'Новове значение'])->render();
             echo $viwe;
