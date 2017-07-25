@@ -14,4 +14,8 @@ class Article extends Model
     protected $guarded = []; // те поля в которые мы запрещаем добовлять записи
 
     protected $dates = ['deleted_at'];
+
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
 }

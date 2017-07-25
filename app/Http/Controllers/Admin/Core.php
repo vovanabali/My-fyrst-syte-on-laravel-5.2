@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Article;
+use App\Country;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use App\User;
+use App\Role;
 
 class Core extends Controller
 {
@@ -53,11 +56,8 @@ class Core extends Controller
         */
 
         //Article::where('id','>',3)->delete();
-
-
         /*$article = Article::find(3);
         $article->delete();*/
-
 
        /*
         $articles = Article::withTrashed()->get();
@@ -73,10 +73,48 @@ class Core extends Controller
                 echo 'Не удалена <br>';
             }
         }*/
-        $article = Article::find(3);
-        $article->forceDelete();
-        $articles = Article::all();
-        dump($articles);
+        /*$article = Article::find(3);
+        $article->forceDelete();*/
+
+        /*//$user = User::find(1);
+
+        //$articles = Article::all();
+
+        //$country = Country::find(1);
+
+        //$country = $user->country;*/
+
+        //$user = User::find(1);
+
+        /*
+        $articles = $user->articles;
+        foreach ($articles as $article){
+            echo $article->name.'<br>';
+        }
+        */
+
+        /*
+        //$articles = $user->articles()->where('id','=',13)->first();
+        //$articles = $user->articles()->where('id','>',13)->get();
+
+        //$article = Article::find(13);
+        //dump($article->user);
+        */
+
+
+        /*
+        foreach ($user->roles as $role){
+            echo $role->name."<br>";
+        }
+        */
+
+        /*
+        $user = User::find(1);
+        $role = $user->roles()->where('roles.id',2)->first();
+        */
+
+        $role = Role::find(1);
+        dump($role->users);
 
         return;
     }
