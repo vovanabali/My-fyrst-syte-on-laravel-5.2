@@ -113,9 +113,67 @@ class Core extends Controller
         $role = $user->roles()->where('roles.id',2)->first();
         */
 
-        $role = Role::find(1);
-        dump($role->users);
+        /*$role = Role::find(1);
+        dump($role->users);*/
 
+        //Жадная загрузка
+        //$articles = Article::with('user')->get(); Возвращет все данные связанных таблиц
+
+        //Ленивая загрузка
+        /*$articles = Article::all(); // Загружает только одну таблицу*/
+
+        ///
+        /// Код
+        ///
+        /*$articles->load('user');// Реализкация жадной загрузки для ленивой
+        foreach ($articles as $article){
+            echo $article->user->name;
+        }*/
+
+        //dump($articles);
+
+        /*$users= User::with('roles','articles')->get();
+        foreach ($users as $user){
+            dump($user->articles);
+        }*/
+
+
+        /*$users= User::has('articles','>','4')->get();//Выбирает только те записи которые имеют связанные записи в таблице articles
+        foreach ($users as $user){
+            dump($user);
+        }*/
+
+
+        //$user = User::find(1);
+        /*$article = new Article([
+            'name'=>'New Article',
+            'text'=>'Some Text'
+        ]);*/
+
+        //$user->articles()->save($article);
+        /*$user->articles()->create([
+            'name'=>'New Article 1',
+            'text'=>'Some Text 1'
+        ]);*/
+        /*
+        $user->articles()->saveMany([
+            new Article(['name'=>'New Article', 'text'=>'Some Text']),
+            new Article(['name'=>'New Article', 'text'=>'Some Text'])
+        ]);
+        $articles=Article::all();
+
+        $role = new Role(['name'=>'guest']);
+        $user->roles()->save($role);
+        dump($articles);
+        */
+
+        $user = User::find(1);
+        $user->articles()->where('id',16)->update([
+            'name'=>'Update #16',
+            'text'=>'New Text'
+        ]);
+        $articles = Article::find(16);
+        dump($articles);
         return;
     }
 
