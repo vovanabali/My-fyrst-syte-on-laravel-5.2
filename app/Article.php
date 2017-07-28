@@ -15,7 +15,22 @@ class Article extends Model
 
     protected $dates = ['deleted_at'];
 
+    protected $casts = [
+        'name'=>'string',
+    ];
+
     public function user(){
         return $this->belongsTo('App\User');
+    }
+
+    //Метод читатеть во время вызова свойства name у обьекта Article выполниться данна шляпа
+    public function getNameAttribute($value){
+       // return 'Погнали ебана рот - '.$value.' Не лезь она тебя сожрет';
+        return $value;
+    }
+
+    //Метод преобразователь
+    public function setNameAttribute($value){
+        $this->attributes['name'] = 'Погнали ебана рот - '.$value;
     }
 }
