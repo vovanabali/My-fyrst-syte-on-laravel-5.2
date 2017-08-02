@@ -5,7 +5,7 @@
 @endsection
 
 @section('header')
- @parent
+
 @endsection
 
 @section('sidebar')
