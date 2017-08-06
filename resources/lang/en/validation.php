@@ -91,9 +91,14 @@ return [
     |
     */
 
+    //Свои ошибки
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'name' => [
+            'required' => 'Поле name обязательно к заполнению',
+        ],
+        'email' => [
+            'max'=>'Данное поле не может превышать :max символов',
+            'required' => 'Поле email обязательно к заполнению',
         ],
     ],
 

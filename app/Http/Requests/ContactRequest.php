@@ -24,7 +24,19 @@ class ContactRequest extends Request
     public function rules()
     {
         return [
-            'name'=>'required'
+            'name'=>'required',
+            'email'=>'max:5|required'
+        ];
+    }
+
+    public function messages()
+    {
+        /*
+         * Если указать перед свойством валидации имя поля +. то данное сообщение будет использываться только для данного поля и игнорировать сообщения из файла валидвации
+         * а он будет игнироровать все.
+         */
+        return [
+            'name.required' => '|Поле| :attribute обязательно к заполнению',
         ];
     }
 }

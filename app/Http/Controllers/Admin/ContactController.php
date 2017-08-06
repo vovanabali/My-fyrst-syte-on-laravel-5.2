@@ -12,17 +12,24 @@ use  App\Http\Requests\ContactRequest;
 class ContactController extends Controller
 {
 
-    public function store(ContactRequest $request,$id=false){
+    public function store(Request $request,$id=false){
         if($request->isMethod('post')){
 
-            /*$messages = [];
+            //Пользывательские сообщения
+            $messages = [
+                'required' => 'Поле :attribute обязательно к заполнению',
+            ];
             $validator = Validator::make($request->all(),[
-                'name'=>'required'
+                'name'=>'sometime|required'//Если поле есть то проверять
             ],$messages);
+
+            $validator->sometimes('email','required',function ($input){
+                return strlen($input->name) >= 10;
+            });
 
             if($validator->fails()){
                return redirect()->route('contact')->withErrors($validator)->withInput();
-            }*/
+            }
         }
         return view('Default.contact',['title'=>'Contact']);
     }
