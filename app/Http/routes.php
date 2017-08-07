@@ -61,10 +61,20 @@ Route::get('/articles',['uses'=>'Admin\Core@getArticles', 'as'=>'articles']);
 
 Route::get('/article/{page}',['uses'=>'Admin\Core@getArticle','as'=>'article'/*,'middleware'=>'mymiddle'*/]); //Использывание посредника
 
-Route::get('/contact',['uses'=>'Admin\ContactController@show', 'as'=>'contact']);
+Route::get('/contact',['middleware'=>['auth'],'uses'=>'Admin\ContactController@show', 'as'=>'contact']);
 
 Route::post('/contact',['uses'=>'Admin\ContactController@store']);
 //list pages
 //Route::resource('/pages','Admin\CoreResurse');
 
 //Route::controller('/pages','PageController',['getCreate'=>'pages.create']);
+
+/*Route::auth();
+
+Route::get('/home', 'HomeController@index');*/
+
+Route::auth();
+Route::group(['prefix'=>'admin','middleware'=>['web']],function (){
+    Route::get('/',['uses'=>'Admin\AdminController@show','as'=>'admin_index']);
+    Route::get('/add/post',['uses'=>'Admin\AdminPostController@create','as'=>'admin_add_post']);
+});

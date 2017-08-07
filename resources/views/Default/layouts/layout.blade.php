@@ -41,7 +41,7 @@
             <a class="navbar-brand" href="{{route('article',array('id'=>10))}}">Article</a>
             <a class="navbar-brand" href="{{route('contact')}}">Contact</a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
+        {{--<div id="navbar" class="navbar-collapse collapse">
             <form class="navbar-form navbar-right">
                 <div class="form-group">
                     <input type="text" placeholder="Email" class="form-control">
@@ -51,7 +51,7 @@
                 </div>
                 <button type="submit" class="btn btn-success">Sign in</button>
             </form>
-        </div><!--/.navbar-collapse -->
+        </div><!--/.navbar-collapse -->--}}
     </div>
 </nav>
 @show
